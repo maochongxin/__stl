@@ -8,11 +8,11 @@
 #include <cstdlib>
 
 namespace STD {
-    class alloc {
+    class Alloc {
     private:
-        const size_t ALIGN = 8;
-        const size_t MAXBYTES = 128;
-        const size_t NFREELISTS = (MAXBYTES / ALIGN);
+        static const size_t ALIGN = 8;
+        static const size_t MAXBYTES = 128;
+        static const size_t NFREELISTS = (MAXBYTES / ALIGN);
     private:
         union obj {
             union obj* next;
