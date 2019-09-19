@@ -3,4 +3,4 @@ project(STL)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(STL main.cpp alloc.h allocator.h construct.h)
+add_executable(STL alloc.h allocator.h construct.h iterator.h typetratis.h)
