@@ -8,7 +8,7 @@
 #include <cstdlib>
 
 namespace STD {
-    class Alloc {
+    class alloc {
     private:
         static const size_t ALIGN = 8;
         static const size_t MAXBYTES = 128;
@@ -36,7 +36,7 @@ namespace STD {
         static char* chunk_alloc(size_t size, size_t& nobjs);
 
     public:
-        static void* alloc(size_t bytes);
+        static void* allocate(size_t bytes);
         static void deallocate(void* ptr, size_t bytes);
         static char* chunk_alloc(void* ptr, size_t old_sz, size_t new_sz);
     };
