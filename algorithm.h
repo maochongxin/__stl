@@ -266,7 +266,7 @@ namespace STD {
 	template <typename ForwardIterator>
 	ForwardIterator adjacent_find(ForwardIterator first, ForwardIterator last) {
 		return STD::adjacent_find(first, last,
-				equal_to<iterator_traits<typename ForwardIterator>::value_type>());
+				equal_to<typename STD::iterator_traits<ForwardIterator>::value_type>());
 	}
 	template <typename  ForwardIterator, typename BinaryPredicate>
 	ForwardIterator adjacent_find(ForwardIterator first, ForwardIterator last, BinaryPredicate pred) {
@@ -277,6 +277,38 @@ namespace STD {
 		}
 		return first;
 	}
+	// count
+	template <typename InputIterator, typename T>
+	typename STD::iterator_traits<InputIterator>::difference_type
+	count (InputIterator first, InputIterator last, const T& val) {
+		typename STD::iterator_traits<InputIterator>::difference_type n = 0;
+		for (; first != last; ++first) {
+			if (*first == val) { ++n; }
+		}
+		return n;
+	}
+
+	// count_if
+	template <typename InputIterator, typename UnaryPredicate>
+	typename STD::iterator_traits<InputIterator>::difference_type
+	count_if (InputIterator first, InputIterator last, UnaryPredicate pred) {
+		typename STD::iterator_traits<InputIterator>::difference_type n = 0;
+		for (; first != last; ++first) {
+			if (pred(*first)) { ++n; }
+		}
+		return n;
+	}
+
+	// mismatch
+	template <typename InputIterator1, typename InputIterator2>
+	STD::pair<InputIterator1, InputIterator2>
+	        mismatch (InputIterator1 first1, InputIterator1 last1, InputIterator2 first2) {
+	        	for (; first1 != last1; ++first1, ++first2) {
+	        		if (*first1 != *first2) { break; }
+	        	}
+				return STD::make_pair(first1, first2);
+	        }
+
 
 
 }
