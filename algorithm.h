@@ -347,13 +347,13 @@ namespace STD {
 		first1 = res.first;
 		first2 = res.second;
 		auto last2 =first2;
-		STD::advance(last2, STD::distance(first1, last1));
+		advance(last2, distance(first1, last1));
 		for (auto it1 = first1; it1 != last1; ++it1) {
 			if (STD::find_if(first1, it1, [&](decltype(*first1) val) {
 				return pred(val, *it1);
 			}) == it1) {
 				auto n = STD::count(first2, last2, *it1);
-				if (n == 0 || STD::count(it1, last1, *it) != n) {
+				if (n == 0 || STD::count(it1, last1, *it1) != n) {
 					return false;
 				}
 			}
@@ -415,9 +415,9 @@ namespace STD {
 	}
 
 	namespace {
-		template <typename RandomAccessIterator, typename BinaryPredicate>
+		template<typename RandomAccessIterator, typename BinaryPredicate>
 		typename STD::iterator_traits<RandomAccessIterator>::value_type
-		mid3 (RandomAccessIterator first, RandomAccessIterator last, BinaryPredicate pred) {
+		mid3(RandomAccessIterator first, RandomAccessIterator last, BinaryPredicate pred) {
 			auto mid = first + (last + 1 - first) / 2;
 			if (pred(*mid, *first)) { STD::swap(*mid, *first); }
 			if (pred(*last, *mid)) { STD::swap(*last, *mid); }
@@ -426,7 +426,8 @@ namespace STD {
 			STD::swap(*mid, *(last - 1));
 			return res;
 		}
-		template <typename RandomAccessIterator, typename BinaryPredicate>
+
+		template<typename RandomAccessIterator, typename BinaryPredicate>
 		void bubble_sort(RandomAccessIterator first, RandomAccessIterator last, BinaryPredicate pred) {
 			auto len = last - first;
 			for (auto i = len; i != 0; --i) {
@@ -440,84 +441,101 @@ namespace STD {
 				if (!swaped) { break; }
 			}
 		}
-		template <typename RandomAccessIterator>
-		void sort(RandomAccessIterator first, RandomAccessIterator last) {
-			return sort(first, last, less<typename STD::iterator_traits<RandomAccessIterator>::value_type>());
+	}
+	template <typename RandomAccessIterator>
+	void sort(RandomAccessIterator first, RandomAccessIterator last) {
+		return sort(first, last, less<typename STD::iterator_traits<RandomAccessIterator>::value_type>());
+	}
+	template <typename RandomAccessIterator, typename BinaryPredicate>
+	void sort(RandomAccessIterator first, RandomAccessIterator last, BinaryPredicate pred) {
+		if (first >= last || first + 1 == last) { return; }
+		if (last - first <= 20) {
+			return bubble_sort(first, last, pred);
 		}
-		template <typename RandomAccessIterator, typename BinaryPredicate>
-		void sort(RandomAccessIterator first, RandomAccessIterator last, BinaryPredicate pred) {
-			if (first >= last || first + 1 == last) { return; }
-			if (last - first <= 20) {
-				return bubble_sort(first, last, pred);
-			}
-			auto mid = mid3(first, last, pred);
-			auto p1 = first, p2 = last - 2;
-			while (p1 < p2) {
-				while (pred(*p1, mid) && (p1 < p2)) { ++p1; }
-				while (!pred(*p2, mid) && (p1 < p2)) { --p2; }
-				if (p1 < p2) { STD::swap(*p1, *p2); }
-			}
-			swap(*p1, *(last - 2));
-			sort(first, p1, pred);
-			sort(p1 + 1, last, pred);
+		auto mid = mid3(first, last, pred);
+		auto p1 = first, p2 = last - 2;
+		while (p1 < p2) {
+			while (pred(*p1, mid) && (p1 < p2)) { ++p1; }
+			while (!pred(*p2, mid) && (p1 < p2)) { --p2; }
+			if (p1 < p2) { STD::swap(*p1, *p2); }
 		}
+		swap(*p1, *(last - 2));
+		sort(first, p1, pred);
+		sort(p1 + 1, last, pred);
+	}
 
-		// generate
-		template <typename InputIterator, typename Function>
-		void generate (InputIterator first, InputIterator last, Function func) {
-			for (; first != last; ++first) {
-				*first = func();
-			}
-		}
-
-		// generate_n
-		template <typename OutputIterator, typename Size, typename Generator>
-		void generate_n (OutputIterator first, Size n, Generator gen) {
-			while (n--) {
-				*first = gen();
-				++first;
-			}
-		}
-		// distance
-		template <typename InputIterator>
-		typename STD::iterator_traits<InputIterator>::difference_type
-		_distance (InputIterator first, InputIterator last, input_iterator_tag) {
-			typename STD::iterator_traits<InputIterator>::difference_type dist = 0;
-			while (first++ != last) { ++dist; }
-			return dist;
-		}
-		template <typename RandomAccessIterator>
-		typename STD::iterator_traits<RandomAccessIterator>::difference_type
-		_distance (RandomAccessIterator first, RandomAccessIterator last, random_access_iterator_tag) {
-			auto dist = last - first;
-			return dist;
-		}
-		template <typename Iterator>
-		typename STD::iterator_traits<Iterator>::difference_type
-		distance(Iterator first, Iterator last) {
-			using iterator_category = typename STD::iterator_traits<Iterator>::iterator_category;
-			return _distance(first, last, iterator_category());
-		}
-
-		// copy
-		template <typename InputIterator, typename OutputIterator>
-		OutputIterator __copy(InputIterator first, InputIterator last, OutputIterator result, STD::_true_type) {
-			auto dist = distance(first, last);
-			memcpy(result, first, sizeof(*first) * dist);
-			advance(result, dist);
-			return result;
-		}
-		template <typename InputIterator, typename OutputIterator>
-		OutputIterator __copy(InputIterator first, InputIterator last, OutputIterator result, STD::_false_type) {
-			while (first != last) { *result++ = *first++; }
-			return result;
-		}
-		template <typename InputIterator, typename OutputIterator, typename T>
-		OutputIterator _copy(InputIterator first, InputIterator last, OutputIterator result, T*) {
-			using is_pod = typename STD::_type_traits<T>::is_POD_type;
-			return __copy(first, last, result, is_pod());
+	// generate
+	template <typename InputIterator, typename Function>
+	void generate (InputIterator first, InputIterator last, Function func) {
+		for (; first != last; ++first) {
+			*first = func();
 		}
 	}
+
+	// generate_n
+	template <typename OutputIterator, typename Size, typename Generator>
+	void generate_n (OutputIterator first, Size n, Generator gen) {
+		while (n--) {
+			*first = gen();
+			++first;
+		}
+	}
+	// distance
+	template <typename InputIterator>
+	typename STD::iterator_traits<InputIterator>::difference_type
+	_distance (InputIterator first, InputIterator last, input_iterator_tag) {
+		typename STD::iterator_traits<InputIterator>::difference_type dist = 0;
+		while (first++ != last) { ++dist; }
+		return dist;
+	}
+	template <typename RandomAccessIterator>
+	typename STD::iterator_traits<RandomAccessIterator>::difference_type
+	_distance (RandomAccessIterator first, RandomAccessIterator last, random_access_iterator_tag) {
+		auto dist = last - first;
+		return dist;
+	}
+	template <typename Iterator>
+	typename STD::iterator_traits<Iterator>::difference_type
+	distance(Iterator first, Iterator last) {
+		using iterator_category = typename STD::iterator_traits<Iterator>::iterator_category;
+		return _distance(first, last, iterator_category());
+	}
+
+	// copy
+	template <typename InputIterator, typename OutputIterator>
+	OutputIterator __copy(InputIterator first, InputIterator last, OutputIterator result, STD::_true_type) {
+		auto dist = distance(first, last);
+		memcpy(result, first, sizeof(*first) * dist);
+		advance(result, dist);
+		return result;
+	}
+	template <typename InputIterator, typename OutputIterator>
+	OutputIterator __copy(InputIterator first, InputIterator last, OutputIterator result, STD::_false_type) {
+		while (first != last) { *result++ = *first++; }
+		return result;
+	}
+	template <typename InputIterator, typename OutputIterator, typename T>
+	OutputIterator _copy(InputIterator first, InputIterator last, OutputIterator result, T*) {
+		using is_pod = typename STD::_type_traits<T>::is_POD_type;
+		return __copy(first, last, result, is_pod());
+	}
+	template <typename InputIterator, typename OutputIterator>
+	OutputIterator copy (InputIterator first, InputIterator last, OutputIterator result) {
+		return _copy(first, last, result, value_type(first));
+	}
+	template <>
+	inline char* copy (char* first, char* last, char* result) {
+		auto dist = last - first;
+		memcpy(result, first, sizeof(*first) * dist);
+		return result + dist;
+	}
+	template <>
+	inline wchar_t* copy (wchar_t* first, wchar_t* last, wchar_t* result) {
+		auto dist = last - first;
+		memcpy(result, first, sizeof(first) * dist);
+		return result + dist;
+	}
+
 
 }
 
