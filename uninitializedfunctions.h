@@ -90,7 +90,7 @@ namespace STD {
 			Size n, const T& x, _false_type) {
 		auto i = 0;
 		for (; i != n; ++i) {
-			construct((*T)(first + i), x);
+			construct((T*)(first + i), x);
 		}
 		return first + i;
 	}

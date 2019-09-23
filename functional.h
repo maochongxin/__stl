@@ -36,6 +36,8 @@ namespace STD {
 			return x == y;
 		}
 	};
+
+
 }
 
 #endif //STL_FUNCTIONAL_H
