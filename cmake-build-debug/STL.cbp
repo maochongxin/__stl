@@ -101,6 +101,9 @@
 		<Unit filename="/Users/maochongxin/CLionProjects/STL/iterator.h">
 			<Option target="STL"/>
 		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/list.h">
+			<Option target="STL"/>
+		</Unit>
 		<Unit filename="/Users/maochongxin/CLionProjects/STL/main.cpp">
 			<Option target="STL"/>
 		</Unit>
