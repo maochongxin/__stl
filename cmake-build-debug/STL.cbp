@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="STL"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/maochongxin/CLionProjects/STL/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/maochongxin/CLionProjects/STL/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/maochongxin/CLionProjects/STL/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="STL">
+				<Option output="/Users/maochongxin/CLionProjects/STL/cmake-build-debug/STL" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/maochongxin/CLionProjects/STL/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 STL"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="STL/fast">
+				<Option output="/Users/maochongxin/CLionProjects/STL/cmake-build-debug/STL" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/maochongxin/CLionProjects/STL/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 STL/fast"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/Users/maochongxin/CLionProjects/STL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/String.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/algorithm.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/alloc.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/allocator.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/construct.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/functional.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/iterator.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/main.cpp">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/reverseiterator.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/typetratis.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/uninitializedfunctions.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/utility.h">
+			<Option target="STL"/>
+		</Unit>
+		<Unit filename="/Users/maochongxin/CLionProjects/STL/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
